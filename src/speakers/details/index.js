@@ -2,8 +2,9 @@ import TalkService from '../../common/talk.service';
 
 export default class SpeakerDetail {
 
-  constructor(talkService) {
+  constructor(talkService,url) {
     this.talkService = talkService
+    this.id = url;
   }
 
   render() {
@@ -11,7 +12,11 @@ export default class SpeakerDetail {
     let speakersHTML = []
 
     tabSpeakers.then((speakers) => {
-      speakers.forEach(sp)
+      speakers.forEach(sp => {
+        if(sp.id == this.id) {
+          sessionsHTML.push(sp.id + sp.firstname + sp.image )
+        }
+      })
     })
   }
 }

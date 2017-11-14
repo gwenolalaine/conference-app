@@ -1,4 +1,4 @@
-/ Intégration de bootstrap (partie JS)
+// Intégration de bootstrap (partie JS)
 import 'bootstrap';
 
 // Intégration de boostrap (partie CSS)
@@ -10,6 +10,7 @@ import SessionService from './common/session.service';
 import SpeakerList from './speakers/list'
 import SessionList from './sessions/list'
 import Session from './sessions/details'
+import Speaker from './speakers/details'
 
 // intégration JQuery
 window.$ = window.jQuery = require('jquery');
@@ -18,8 +19,17 @@ const talkService = new TalkService()
 const sessionService = new SessionService();
 
 var router = () => {
-    if (location.hash == '#speakers-list') {
-        new SpeakerList(talkService).render()
+    if (location.hash.startsWith('#speakers-list')) {
+         let url = location.hash.slice(14,location.hash.lengh);
+
+         if(url =="") {
+          new SpeakerList(talkService).render()
+        }else{
+          url = url.slice(1,url.length);
+          new Speaker(talkService,url).render();
+        }
+
+
     } else if (location.hash.startsWith('#sessions-list')) {
         let url = location.hash.slice(14,location.hash.length);
         if(url == ""){
