@@ -20,6 +20,7 @@ export default class Session {
         let description;
         let titre;
         let presentateurs = [];
+        let notes;
 
         sess.then((sessions) => {
             sessions.forEach(se => {
@@ -36,11 +37,13 @@ export default class Session {
 
                 description = se.desc;
                 titre = se.title;
+                notes = `<a class="btn btn-primary notes" href="#notes/${se.id}">Mes notes</btn>`
             })
 
                 $('#main-view').html(template);
                 $('#description').html(description)
                 $('#titre').html(titre)
+                $('#notes').html(notes)
 
             })
         }

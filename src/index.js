@@ -11,6 +11,9 @@ import SpeakerList from './speakers/list'
 import SessionList from './sessions/list'
 import Session from './sessions/details'
 import Speaker from './speakers/details'
+import Note from './notes/'
+import template from './layout/layout.html'
+
 
 // intégration JQuery
 window.$ = window.jQuery = require('jquery');
@@ -39,14 +42,18 @@ var router = () => {
             new Session(sessionService, url).render();
         }
 
+    }else if(location.hash.startsWith('#notes')){
+        let url = location.hash.slice(7,location.hash.length);
+        new Note().render(url);
     }
 }
 var layout = new Layout();
+layout.render();
  window.addEventListener('load', () => {
     window.onhashchange = () => {
-    router();
-    layout.render();
+        router();
+       // layout.render();
     };
     router();
-    layout.render();
+        
 });
