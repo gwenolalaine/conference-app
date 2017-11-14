@@ -19,7 +19,7 @@ export default class Session {
         const sess = this.sessionService.findAllSessions().then(listesQse=>listesQse.filter(se=>se.id == this.id))
         let description;
         let titre;
-        let presentateurStr;
+        let presentateurs = [];
         
         sess.then((sessions) => {
             sessions.forEach(se => {
@@ -28,9 +28,9 @@ export default class Session {
 
                     Promise.all(reqs).then((tabResultats) => {
                         tabResultats.forEach(speaker => {
-                            presentateurStr += this.speakToString(speaker)
+                            presentateurs.push(this.speakToString(speaker))
                         })
-                        $('#liste').html(presentateurStr)
+                        $('#liste').html(presentateurs.join('<br/>'))
                     })
                 }
 
