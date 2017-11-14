@@ -10,8 +10,6 @@ export default class SpeakerList {
   }
 
   render() {
-
-
     const tabSpeakers = this.talkService.findAllSpeakers()
     let speakersHTML = []
 

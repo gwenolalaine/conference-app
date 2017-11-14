@@ -1,8 +1,7 @@
 
 import TalkService from '../../common/session.service';
 
-
-export default class SpeakerList {
+export default class SessionList {
 
   constructor(sessionService) {
     this.sessionService = sessionService
@@ -22,3 +21,4 @@ export default class SpeakerList {
         })
     }
 }
+
