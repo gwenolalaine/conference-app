@@ -20,7 +20,7 @@ const sessionService = new SessionService();
 
 var router = () => {
     if (location.hash.startsWith('#speakers-list')) {
-         let url = location.hash.slice(14,location.hash.lengh);
+         let url = location.hash.slice(14,location.hash.length);
 
          if(url =="") {
           new SpeakerList(talkService).render()
