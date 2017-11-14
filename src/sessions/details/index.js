@@ -4,7 +4,7 @@ import TalkService from '../../common/talk.service';
 import template from "./session.html"
 
 export default class Session {
-    
+
       constructor(sessionService, url) {
         this.sessionService = sessionService
         this.id = url;
@@ -12,7 +12,7 @@ export default class Session {
       }
 
       speakToString(speaker){
-        return `<div class="presentateur"><img src="./src/images/${speaker.image}" class="img-thumbnail" width="50px"/> ${speaker.firstname} ${speaker.lastname}</li>`
+        return `<div class="presentateur"><img src="./src/images/${speaker.image}" class="img-thumbnail" width="100px" height="100px"/> ${speaker.firstname} ${speaker.lastname}</li>`
         }
 
       render() {
@@ -20,7 +20,7 @@ export default class Session {
         let description;
         let titre;
         let presentateurs = [];
-        
+
         sess.then((sessions) => {
             sessions.forEach(se => {
                 if(se.speakers != null){
@@ -41,8 +41,8 @@ export default class Session {
                 $('#main-view').html(template);
                 $('#description').html(description)
                 $('#titre').html(titre)
-                
+
             })
         }
-       
+
     }

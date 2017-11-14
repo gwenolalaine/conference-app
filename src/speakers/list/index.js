@@ -15,7 +15,7 @@ export default class SpeakerList {
 
     tabSpeakers.then((speakers) => {
             speakers.forEach(sp => {
-            speakersHTML.push(sp.firstname)
+            speakersHTML.push("<li class='list-group-item'><a href='#speakers-list/" + sp.id +"'>" + sp.firstname + "</a></li>")
             })
 
               $('#main-view').html(speakersHTML.join("<br>"))

@@ -23,7 +23,7 @@ export default class SpeakerDetail {
           title = sp.lastname + " " + sp.firstname;
           image = '<img src="./src/images/'+sp.image+'"alt="img_presentateur"/>';
           sp.socials.forEach(soc => {
-            link.push('<a href="'+soc.link+'">'+soc.class+'</a>');
+            link.push('<li class="list-inline-item"><a href="'+soc.link+'">'+soc.class+'</a>');
           })
           presentation = sp.about
         }
@@ -32,7 +32,7 @@ export default class SpeakerDetail {
       $('#main-view').html(template)
       $('#title').html(title)
       $('#img').html(image)
-      $('#links').html(link.join("<br>"))
+      $('#links').html(link.join("</li>"))
       $('#presentations').html(presentation)
 
     })
