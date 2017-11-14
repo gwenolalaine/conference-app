@@ -16,7 +16,7 @@ export default class Session {
         }
 
       render() {
-        const sess = this.sessionService.findAllSessions().then(listesQse=>listesQse.filter(se=>se.id == this.id))
+        const sess = this.sessionService.findAllSessions().then(listes=>listes.filter(se=>se.id == this.id))
         let description;
         let titre;
         let presentateurs = [];
