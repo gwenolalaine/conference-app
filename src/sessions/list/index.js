@@ -1,5 +1,6 @@
 
 import TalkService from '../../common/session.service';
+import template from "./list.html"
 
 export default class SessionList {
 
@@ -13,10 +14,12 @@ export default class SessionList {
 
         sessionSpeakers.then((sessions) => {
             sessions.forEach(se => {
-            sessionsHTML.push("<a href='#sessions/" + se.id +"'>" + se.title + "</a>")
+            sessionsHTML.push("<li class='list-group-item'><a href='#sessions-list/" + se.id +"'>" + se.title + "</a></li>")
             })
-
-            $('#main-view').html(sessionsHTML.join("<br>"))
+            console.log(sessionsHTML)
+            $('#main-view').html(template)
+            $('#elements').html(sessionsHTML.join(''))
+           
 
         })
     }
