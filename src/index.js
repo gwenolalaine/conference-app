@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import Layout from './layout/index.js'
 import TalkService from './common/talk.service';
+import SpeakerList from './speakers/list'
 
 // intégration JQuery
 window.$ = window.jQuery = require('jquery');
@@ -20,10 +21,10 @@ tabSpeakers.then((speakers) => {
     speakers.forEach(function(element) {
         console.log(element.firstname)
     });
-   
+
 })
 
 var layout = new Layout();
 layout.render();
 
-
+new SpeakerList(talkService).render()
