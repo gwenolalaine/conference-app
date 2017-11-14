@@ -7,24 +7,31 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import Layout from './layout/index.js'
 import TalkService from './common/talk.service';
+import SessionService from './common/session.service';
 import SpeakerList from './speakers/list'
+import SessionList from './sessions/list'
 
 // intégration JQuery
 window.$ = window.jQuery = require('jquery');
 
 const talkService = new TalkService()
+const sessionService = new SessionService();
 
-const tabSpeakers = talkService.findAllSpeakers()
-
-
-tabSpeakers.then((speakers) => {
-    speakers.forEach(function(element) {
-        console.log(element.firstname)
-    });
-
-})
-
+var router = () => {
+    if (location.hash == '#speakers-list') {
+        new SpeakerList(talkService).render()
+    } else if (location.hash == '#sessions-list') {
+        new SessionList(sessionService).render()
+    } else {
+    // TODO afficher vue par défaut
+    }
+}
 var layout = new Layout();
-layout.render();
-
-new SpeakerList(talkService).render()
+ window.addEventListener('load', () => {
+    window.onhashchange = () => {
+    router();
+    layout.render();
+    };
+    router();
+    layout.render();
+});
