@@ -39,8 +39,6 @@ var router = () => {
             new Session(sessionService, url).render();
         }
 
-    } else {
-    // TODO afficher vue par défaut
     }
 }
 var layout = new Layout();
